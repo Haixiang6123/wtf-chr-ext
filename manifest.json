@@ -1,7 +1,7 @@
 {
-    "name": "Getting Started Example",
+    "name": "Auto define abbreviations",
     "version": "1.0",
-    "description": "Build an Extension!",
+    "description": "A chrome extension to define abbreviations",
     "permissions": ["activeTab", "storage", "declarativeContent", "contextMenus", "tabs"],
     "content_scripts": [
         {
@@ -20,7 +20,7 @@
             "24": "images/icon24.png",
             "32": "images/icon32.png"
         },
-        "default_title": "我的翻译",
+        "default_title": "Auto define abbreviations",
         "default_popup": "popup.html"
     },
     "icons": {
