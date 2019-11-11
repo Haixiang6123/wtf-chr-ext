@@ -4,14 +4,14 @@ function Panel() {
 }
 
 Panel.prototype.create = function () {
-    let html = `<div class="_panel_h">Translate <span class="close">X</span></div>
+    let html = `<div class="_panel_h">Definition of Abbreviation<span class="close">X</span></div>
       <div class="_panel_m">
         <div class="source">
-          <div class="title">English</div>
+          <div class="title">Abbreviation</div>
           <div class="content"></div>
         </div>
         <div class="dest">
-          <div class="title">简体中文</div>
+          <div class="title">Definition</div>
           <div class="content">...</div>
         </div>
       </div>`
@@ -59,10 +59,13 @@ Panel.prototype.translate = function (raw, pos) {
             this.container.querySelector('.dest .title').innerText = result.to.key
         }
 
-        fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${fromValue}&tl=${toValue}&dt=t&q=${raw}`)
+        const userId = '7241'
+        const token = 'lNsBjsSApKzOvOaM'
+
+        fetch(`https://www.abbreviations.com/services/v2/abbr.php?uid=${userId}&tokenid=${token}&term=${raw}&format=json`)
             .then(res => res.json())
             .then(result => {
-                this.container.querySelector('.dest .content').innerText = result[0][0][0]
+                this.container.querySelector('.dest .content').innerText = result.result[0].definition
             })
     })
 }
